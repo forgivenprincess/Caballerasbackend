@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 const express = require('express')
 
 const { query } = require('express')
-const Followers = require('../models/Followers')
 const Publicaciones = require('../models/Publicaciones')
+const { resolveInclude } = require('ejs')
 const router = express.Router()
 //manejo los metodos CRUD
 
@@ -18,11 +18,13 @@ router.get('/',async (req,res,next)=>{
         filtro.id = req.query.id;
         const skip = req.query.skip
         const limit = req.query.limit
-        if (filtro.id){
-            const listado = await (Publicaciones.lista({_id:filtro.id}))
-            res.json({listado})
-        }else{const listado = await (Publicaciones.lista({$or:[{usuario:filtro.usuario},{texto:filtro.texto},{fecha:filtro.fecha},{imagen:filtro.imagen}]},skip,limit))
-        res.json({listado})}   
+        if (filtro.fecha || filtro.imagen || filtro.texto || filtro.usuario||filtro.id){
+            const lista = await (Publicaciones.lista({$or:[{_id:filtro.id},{usuario:filtro.usuario},{texto:filtro.texto},{fecha:filtro.fecha},{imagen:filtro.imagen}],skip,limit}))
+            res.send({lista})
+        }
+        else {
+            const listado = await (Publicaciones.lista({},skip,limit))
+            res.send({listado}) }  
     
 
         
@@ -32,18 +34,6 @@ router.get('/',async (req,res,next)=>{
         next(error)
     }})
     
-        
-
-
-      
-      
-
-        
-
-
-
-
-
 //CREAR UN NUEVO POST
 router.post('/', async (req, res, next) => {
     try {
