@@ -52,7 +52,7 @@ router.post('/', async (req, res, next) => {
         //guardar publicacion en BD
         const save_post = Pub.save();
     
-        res.json({ result:new_post});
+        res.json({ result:Pub._id,usuario:Pub.usuario});
     
     } catch (err) {
         next(err);

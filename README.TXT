@@ -35,7 +35,6 @@ UsertoDelete es el usuario que desea dejar de seguir al UsertoDelete*******
 
 
 Listado de seguidores get
-http://127.0.0.1:3000/api/seguidores/listadodeseguidores?usuario=Gabriela&skip=0&limit=10
 
 listado de seguidos get
 http://127.0.0.1:3000/api/seguidores/listadodeseguidos?usuario=Claudia&skip=0&limit=10

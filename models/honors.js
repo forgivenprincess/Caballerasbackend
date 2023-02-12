@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
  * Crea el schema con los campos.
  */
 const honorsSchema = mongoose.Schema({
-    publishing_id: Number,
+    publishing_id: String,
     user: String 
 });
 
