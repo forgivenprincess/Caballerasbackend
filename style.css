@@ -55,7 +55,36 @@ h5 {
   padding: 20px;
   margin: 20px;
 }
+.new-account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: teal;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+}
 
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
 .btn {
   background-color: purple;
   color: white;
